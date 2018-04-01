@@ -1,0 +1,7 @@
+server:
+  port: 8080
+  context-path: /girl
+girl:
+    name: 小qing
+    cupSize: A
+    age: 16

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TreeNode:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/TreeNode_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TreeNode/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TreeNode" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
