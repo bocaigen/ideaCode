@@ -1,5 +1,6 @@
-package com.bobo;
+package com.bobo.controller;
 
+import com.bobo.properties.GirlProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

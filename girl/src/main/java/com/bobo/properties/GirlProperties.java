@@ -1,4 +1,4 @@
-package com.bobo;
+package com.bobo.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
