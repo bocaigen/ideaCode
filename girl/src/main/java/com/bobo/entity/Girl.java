@@ -1,5 +1,7 @@
 package com.bobo.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
+    @NotEmpty(message = "姓名不能为空！")
     private String name;
 
     private String cupSize;

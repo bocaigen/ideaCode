@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -45,8 +46,11 @@ public class GirlController {
     public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
         boolean b = bindingResult.hasErrors();
         if(b){
-            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
-            System.out.println(defaultMessage);
+//            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError error:allErrors){
+                log.error(error.getDefaultMessage());
+            }
             return null;
         }
         Girl saveGirl = girlRepository.save(girl);
