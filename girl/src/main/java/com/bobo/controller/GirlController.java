@@ -1,8 +1,10 @@
 package com.bobo.controller;
 
 import com.bobo.entity.Girl;
+import com.bobo.entity.Result;
 import com.bobo.repository.GirlRepository;
 import com.bobo.service.GirlService;
+import com.bobo.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,7 @@ public class GirlController {
      * @return
      */
     @PostMapping(value = "/girls")
-    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
+    public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult){
         boolean b = bindingResult.hasErrors();
         if(b){
 //            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
@@ -51,10 +53,11 @@ public class GirlController {
             for (ObjectError error:allErrors){
                 log.error(error.getDefaultMessage());
             }
-            return null;
+            return ResultUtil.error(0,allErrors.get(0).getDefaultMessage());
         }
+
         Girl saveGirl = girlRepository.save(girl);
-        return saveGirl;
+        return ResultUtil.success(saveGirl);
     }
 
     /**
@@ -117,6 +120,12 @@ public class GirlController {
     @GetMapping(value = "/girls/two")
     public void girlTwo(){
         girlService.insertTwo();
+    }
+
+
+    @GetMapping(value = "/girls/getAge/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws Exception {
+        girlService.getAge(id);
     }
 
 }

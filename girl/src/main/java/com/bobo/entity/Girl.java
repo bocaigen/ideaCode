@@ -17,7 +17,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
-    @NotEmpty(message = "姓名不能为空！")
+    @NotEmpty(message = "姓名必填！")
     private String name;
 
     private String cupSize;
